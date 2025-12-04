@@ -1,0 +1,10 @@
+# Archivos de configuración y lock files
+pnpm-lock.yaml
+package-lock.json
+node_modules
+
+# Archivos Svelte con sintaxis especial en CSS (temporalmente)
+# Estos archivos usan {colors.primary} que no es CSS estándar
+src/lib/components/atoms/Input/Input.svelte
+src/lib/components/molecules/Card/Card.svelte
+
