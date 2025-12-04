@@ -3,12 +3,14 @@
 
   export let fill = false;
   export let disabled = false;
+  export let type = 'button';
 </script>
 
 <button
   class="button"
   class:fill
   {disabled}
+  {type}
   on:click
   style="--color: {colors.primary}; --radius: {radius.md}; --shadow: {shadows.md};"
 >
