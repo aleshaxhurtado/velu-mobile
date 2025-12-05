@@ -1,10 +1,12 @@
 <script>
-  import { colors, radius } from '$tokens';
+  import '$tokens/tokens.css';
 
-  export let type = 'text';
-  export let placeholder = '';
-  export let value = '';
-  export let disabled = false;
+  let {
+    type = 'text',
+    placeholder = '',
+    value = $bindable(),
+    disabled = false
+  } = $props();
 </script>
 
 <input
@@ -13,27 +15,26 @@
   bind:value
   {disabled}
   class="input"
-  style="--radius: {radius.md}; --border: {colors.border}; --primary: {colors.primary};"
 />
 
 <style>
   .input {
     width: 100%;
-    padding: 0.75rem 1rem;
+    padding: var(--spacing-xs) var(--spacing-sm);
     border: 1px solid var(--border);
-    border-radius: var(--radius);
-    font-size: 1rem;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
     outline: none;
     transition: all 0.2s;
   }
 
   .input:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+    box-shadow: 0 0 0 3px var(--focus-shadow);
   }
 
   .input:disabled {
-    opacity: 0.5;
+    opacity: var(--opacity-disabled);
     cursor: not-allowed;
   }
 </style>

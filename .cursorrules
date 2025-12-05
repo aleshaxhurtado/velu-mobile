@@ -1,5 +1,38 @@
 # Reglas del Proyecto Velu Mobile
 
+## 📚 Archivos de Conocimiento
+
+**IMPORTANTE**: Antes de trabajar en cualquier tarea relacionada con estas tecnologías, leer los archivos de conocimiento correspondientes en `docs/`:
+
+- **`docs/svelte5-sintaxis.md`**: Todo sobre sintaxis de Svelte 5, runes, props, eventos, estado, snippets, lifecycle
+- **`docs/sveltekit-layouts.md`**: Cómo manejar layouts y rutas en SvelteKit con Svelte 5
+- **`docs/tokens-diseno.md`**: Cómo usar tokens de diseño (CSS y JavaScript)
+- **`docs/pnpm.md`**: Información sobre pnpm (si existe)
+
+**Regla**: Siempre leer estos archivos cuando trabajes con estas tecnologías. NO buscar información externa si ya está documentada aquí.
+
+## Revisión y Actualización del Proyecto
+
+- **Revisar TODO el proyecto SOLO cuando el usuario incluya `#context` en su mensaje**: 
+  - Cuando veas `#context`, esto indica que el usuario quiere hacer cambios significativos y necesita que entiendas el 100% del contexto del proyecto
+  - En este caso, revisar la estructura completa del proyecto, archivos clave, y entender el estado actual antes de hacer cambios
+  - Actualizar `.cursorrules` si encuentras algo nuevo, deprecado, o que requiera documentación durante esta revisión
+- **Si NO hay `#context` en el mensaje**: 
+  - NO revisar todo el proyecto
+  - Usar el contexto existente y las reglas ya establecidas en `.cursorrules`
+  - Trabajar solo con los archivos específicos mencionados o necesarios para la tarea
+- **Cuando encuentres código deprecado o problemas durante cualquier tarea**: 
+  - Buscar TODOS los casos similares en el proyecto usando `grep` o `codebase_search`
+  - Migrar/actualizar todos los casos encontrados de forma consistente
+  - Actualizar los archivos de conocimiento en `docs/` si encuentras nueva información o mejores prácticas
+- **Documentar conocimiento nuevo**: Cuando busques información externa (web search, documentación, etc.) para resolver algo que no sabías cómo hacer:
+  - SIEMPRE agregar esa información al archivo de conocimiento correspondiente en `docs/`
+  - Si no existe un archivo apropiado, crear uno nuevo siguiendo el patrón `docs/[tema].md`
+  - Incluir ejemplos prácticos de cómo implementarlo correctamente
+  - Esto evita tener que buscar la misma información en el futuro
+  - Ejemplo: Si buscas cómo manejar layouts de SvelteKit con snippets, documentarlo en `docs/sveltekit-layouts.md`
+- **El proyecto está generalmente estable**: El usuario controla cuándo necesita una revisión completa usando `#context`
+
 ## Lenguaje y Tecnologías
 
 - **SOLO JavaScript (JS)**: Este proyecto usa exclusivamente JavaScript (.js), NO TypeScript (.ts)
@@ -30,6 +63,7 @@
 - Tokens de diseño en `src/lib/tokens/`
 - Rutas en `src/routes/`
 - **Documentación**: Todos los archivos `.md` y documentación deben ir en la carpeta `docs/`
+- **Archivos de conocimiento**: Los archivos de conocimiento técnico están en `docs/` con nombres descriptivos (ej: `svelte5-sintaxis.md`, `tokens-diseno.md`)
 
 ## Configuración
 
@@ -37,6 +71,7 @@
 - **eslint.config.js**: Sin referencias a TypeScript
 - **vite.config.js**: Configuración de Vite
 - **svelte.config.js**: Configuración de SvelteKit con adapter-vercel
+- **SSR desactivado**: El proyecto usa solo Client-Side Rendering (CSR) para evitar carga en el servidor. Configurado en `src/routes/+layout.js` con `export const ssr = false`
 
 ## Convenciones
 
@@ -50,6 +85,7 @@
 - **TODOS los archivos `.md` deben ir en la carpeta `docs/`**
 - NO crear archivos `.md` en la raíz del proyecto (excepto README.md y CONTRIBUTING.md que son estándar)
 - Cualquier documentación adicional debe estar en `docs/`
+- Los archivos de conocimiento técnico deben seguir el patrón `docs/[tema].md`
 
 ## Al crear código nuevo
 
@@ -60,3 +96,27 @@
 5. Siempre usar los componentes del atomic design sin modificarlos a menos que sea necesario para cumplir con la peticion, pero si no existe el componente se puede crear dentro del atomic design y recien usarlo.
 6. Usar los alias definidos en svelte.config.js
 7. Crear documentación en `docs/` si es necesario
+8. **SIEMPRE usar sintaxis moderna de Svelte 5**: Ver `docs/svelte5-sintaxis.md` para detalles completos
+9. **NUNCA usar sintaxis legacy**: Ver `docs/svelte5-sintaxis.md` para lista completa de sintaxis deprecada
+10. **Para layouts de SvelteKit**: Ver `docs/sveltekit-layouts.md` para la forma correcta de implementarlos
+11. **Para tokens de diseño**: Ver `docs/tokens-diseno.md` para cómo usarlos correctamente
+
+## Resumen de Sintaxis Svelte 5
+
+**Referencia completa**: Ver `docs/svelte5-sintaxis.md`
+
+**SIEMPRE usar**:
+- `$props()` para props
+- `onclick`, `onsubmit`, etc. para eventos
+- `$state()` para estado reactivo
+- `$derived()` para valores derivados
+- `$effect()` para efectos reactivos
+- `{@render children?.()}` para snippets (NUNCA `<slot />`)
+
+**NUNCA usar** (legacy deprecado):
+- `export let` para props
+- `on:click`, `on:submit` para eventos
+- `$:` para reactive statements
+- `beforeUpdate`, `afterUpdate` para lifecycle
+- `createEventDispatcher` para eventos
+- `<slot />` para contenido hijo

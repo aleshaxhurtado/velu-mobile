@@ -1,33 +1,25 @@
 <script>
-  import { colors, spacing, radius, shadows } from '$tokens';
+  import '$tokens/tokens.css';
 
-  export let fill = false;
-  export let disabled = false;
-  export let type = 'button';
+  let { fill = false, disabled = false, type = 'button', children } = $props();
 </script>
 
-<button
-  class="button"
-  class:fill
-  {disabled}
-  {type}
-  on:click
-  style="--color: {colors.primary}; --radius: {radius.md}; --shadow: {shadows.md};"
->
-  <slot />
+<button class="button" class:fill {disabled} {type}>
+  {@render children?.()}
 </button>
 
 <style>
   .button {
-    padding: 0.75rem 1.5rem;
+    padding: var(--spacing-xs) var(--spacing-md);
     border: none;
-    border-radius: var(--radius);
-    background-color: var(--color);
+    border-radius: var(--radius-md);
+    background-color: var(--primary);
     color: white;
+    font-size: var(--font-size-base);
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s;
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-md);
   }
 
   .button.fill {
@@ -35,12 +27,12 @@
   }
 
   .button:hover:not(:disabled) {
-    opacity: 0.9;
+    opacity: var(--opacity-hover);
     transform: translateY(-1px);
   }
 
   .button:disabled {
-    opacity: 0.5;
+    opacity: var(--opacity-disabled);
     cursor: not-allowed;
   }
 </style>

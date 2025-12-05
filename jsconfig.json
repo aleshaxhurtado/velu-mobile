@@ -1,4 +1,5 @@
 {
+  "extends": "./.svelte-kit/tsconfig.json",
   "compilerOptions": {
     "module": "esnext",
     "target": "esnext",
@@ -7,11 +8,12 @@
     "baseUrl": ".",
     "allowJs": true,
     "noEmit": true,
+    "types": ["@sveltejs/kit"],
     "paths": {
       "$tokens": ["src/lib/tokens/index.js"],
       "$lib/*": ["src/lib/*"]
     }
   },
-  "include": ["src/**/*.js", "src/**/*.svelte"],
-  "exclude": ["node_modules", "build", ".svelte-kit", "dist", "**/*.ts", "**/*.tsx"]
+  "include": ["src/**/*.js", "src/**/*.svelte", "src/**/*.d.ts", ".svelte-kit/ambient.d.ts", ".svelte-kit/non-ambient.d.ts"],
+  "exclude": ["node_modules", "build", "dist", "**/*.ts", "**/*.tsx"]
 }

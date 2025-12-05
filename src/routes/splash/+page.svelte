@@ -1,6 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
+  // Tokens CSS ya están disponibles globalmente desde +layout.svelte
 
   onMount(() => {
     // Redirige al onboarding después de 2 segundos
@@ -24,7 +25,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #0ea5e9 0%, #a855f7 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   }
 
   .content {
@@ -33,15 +34,14 @@
   }
 
   h1 {
-    font-size: 3rem;
+    font-size: var(--font-size-4xl);
     font-weight: bold;
-    margin: 0 0 1rem 0;
+    margin: 0 0 var(--spacing-sm) 0;
   }
 
   p {
-    font-size: 1rem;
+    font-size: var(--font-size-base);
     opacity: 0.9;
     margin: 0;
   }
 </style>
-

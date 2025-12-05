@@ -22,7 +22,7 @@ body {
 body {
   margin: 0;
   padding: 0;
-  background-color: #fafafa;
+  background-color: var(--color-bg-primary, #171717);
 }
 
 #app {

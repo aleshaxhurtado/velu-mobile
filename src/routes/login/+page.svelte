@@ -3,15 +3,21 @@
   import Button from '$lib/components/atoms/Button/Button.svelte';
   import Input from '$lib/components/atoms/Input/Input.svelte';
   import Card from '$lib/components/molecules/Card/Card.svelte';
+  // Tokens CSS ya están disponibles globalmente desde +layout.svelte
 
   let email = '';
   let password = '';
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    goto('/home');
+  }
 </script>
 
 <div class="page">
   <Card>
     <h1>Login</h1>
-    <form on:submit|preventDefault={() => goto('/home')}>
+    <form onsubmit={handleSubmit}>
       <div class="form-group">
         <Input type="email" placeholder="Email" bind:value={email} />
       </div>
@@ -20,31 +26,28 @@
       </div>
       <Button fill type="submit">Entrar</Button>
     </form>
-    <Button on:click={() => goto('/onboarding')}>Volver</Button>
+    <Button onclick={() => goto('/onboarding')}>Volver</Button>
   </Card>
 </div>
 
 <style>
   .page {
-    padding: 1.5rem;
+    padding: var(--spacing-md);
     min-height: 100vh;
-    background: #fafafa;
+    background: var(--bg-light);
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
   .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: var(--spacing-sm);
   }
 
   h1 {
-    margin: 0 0 1.5rem 0;
+    margin: 0 0 var(--spacing-md) 0;
     text-align: center;
-    color: #171717;
-  }
-
-  button {
-    margin-top: 0.5rem;
+    color: var(--text);
+    font-size: var(--font-size-2xl);
   }
 </style>
