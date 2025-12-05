@@ -1,17 +1,15 @@
 <script>
   import { goto } from '$app/navigation';
-  import { Button, Card } from '$components';
-  import { slideTransition } from '$lib/utils/transitions';
+  import Button from '$lib/components/atoms/Button/Button.svelte';
+  import Card from '$lib/components/molecules/Card/Card.svelte';
 </script>
 
-<div class="page" transition:slideTransition>
+<div class="page">
   <Card>
     <h1>Home</h1>
     <p>Esta es la página principal</p>
     <div class="actions">
-      <Button fill on:click={() => goto('/messages')}>Messages</Button>
-      <Button fill on:click={() => goto('/notifications')}>Notifications</Button>
-      <Button on:click={() => goto('/settings')}>Settings</Button>
+      <Button fill on:click={() => goto('/login')}>Cerrar Sesión</Button>
     </div>
   </Card>
 </div>

@@ -1,13 +1,14 @@
 <script>
   import { goto } from '$app/navigation';
-  import { Button, Input, Card } from '$components';
-  import { slideTransition } from '$lib/utils/transitions';
+  import Button from '$lib/components/atoms/Button/Button.svelte';
+  import Input from '$lib/components/atoms/Input/Input.svelte';
+  import Card from '$lib/components/molecules/Card/Card.svelte';
 
   let email = '';
   let password = '';
 </script>
 
-<div class="page" transition:slideTransition>
+<div class="page">
   <Card>
     <h1>Login</h1>
     <form on:submit|preventDefault={() => goto('/home')}>
@@ -19,7 +20,7 @@
       </div>
       <Button fill type="submit">Entrar</Button>
     </form>
-    <Button on:click={() => goto('/')}>Volver</Button>
+    <Button on:click={() => goto('/onboarding')}>Volver</Button>
   </Card>
 </div>
 

@@ -13,7 +13,7 @@
   bind:value
   {disabled}
   class="input"
-  style="--radius: {radius.md}; --border: {colors.border};"
+  style="--radius: {radius.md}; --border: {colors.border}; --primary: {colors.primary};"
 />
 
 <style>
@@ -28,7 +28,7 @@
   }
 
   .input:focus {
-    border-color: {colors.primary};
+    border-color: var(--primary);
     box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
   }
 
