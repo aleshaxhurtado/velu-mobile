@@ -87,6 +87,135 @@
 - Cualquier documentación adicional debe estar en `docs/`
 - Los archivos de conocimiento técnico deben seguir el patrón `docs/[tema].md`
 
+## Commits (Conventional Commits)
+
+- **SIEMPRE usar formato Conventional Commits**: `tipo(alcance): descripción breve`
+- **Formato completo**:
+  ```
+  tipo(alcance): descripción breve
+  
+  Descripción detallada opcional (puede tener múltiples líneas)
+  explicando el qué y el por qué del cambio.
+  
+  - Lista de cambios específicos
+  - Cada cambio en una línea con guión
+  - Usar viñetas para múltiples cambios relacionados
+  
+  BREAKING CHANGE: descripción si hay cambios incompatibles
+  ```
+
+### Tipos de Commit
+
+- **`feat`**: Nueva funcionalidad
+  ```
+  feat(auth): agregar login con Google OAuth
+  ```
+
+- **`fix`**: Corrección de bugs
+  ```
+  fix(button): corregir estilo disabled en modo oscuro
+  ```
+
+- **`refactor`**: Refactorización de código sin cambiar funcionalidad
+  ```
+  refactor(components): migrar a sintaxis Svelte 5
+  ```
+
+- **`docs`**: Cambios en documentación
+  ```
+  docs(readme): actualizar instrucciones de instalación
+  ```
+
+- **`style`**: Cambios de formato, espacios, punto y coma, etc. (no afecta funcionalidad)
+  ```
+  style(button): corregir indentación
+  ```
+
+- **`test`**: Agregar o modificar tests
+  ```
+  test(utils): agregar tests para función formatDate
+  ```
+
+- **`chore`**: Tareas de mantenimiento, dependencias, build, etc.
+  ```
+  chore(deps): actualizar svelte a versión 5.45.5
+  ```
+
+- **`perf`**: Mejoras de rendimiento
+  ```
+  perf(components): optimizar renderizado de lista grande
+  ```
+
+- **`ci`**: Cambios en configuración de CI/CD
+  ```
+  ci(github): agregar workflow de tests automáticos
+  ```
+
+### Alcance (Scope)
+
+- Opcional pero recomendado
+- Indica qué parte del código afecta
+- Ejemplos: `auth`, `components`, `layout`, `tokens`, `docs`, `deps`
+
+### Ejemplos de Commits Correctos
+
+```
+feat(auth): agregar autenticación con Supabase
+
+- Implementar login con email/password
+- Agregar registro de usuarios
+- Crear componente LoginForm
+- Integrar con Supabase client
+
+BREAKING CHANGE: Requiere variables PUBLIC_SUPABASE_URL y PUBLIC_SUPABASE_ANON_KEY
+```
+
+```
+fix(button): corregir estado disabled en modo oscuro
+
+El botón no mostraba correctamente el estado disabled cuando
+el tema oscuro estaba activo. Ahora usa var(--opacity-disabled)
+correctamente.
+```
+
+```
+refactor(docs): reorganizar documentación en archivos separados
+
+- Separar conocimiento técnico en docs/
+- Crear docs/svelte5-sintaxis.md
+- Crear docs/sveltekit-layouts.md
+- Limpiar .cursorrules dejando solo reglas
+```
+
+```
+chore(deps): actualizar dependencias
+
+- svelte: 5.40.0 -> 5.45.5
+- @capacitor/core: 5.0.0 -> 5.5.0
+- pnpm: 8.0.0 -> 9.0.0
+```
+
+### Reglas Importantes
+
+1. **Primera línea**: Máximo 72 caracteres, imperativo, sin punto final
+2. **Cuerpo**: Separado por línea en blanco, explicar el qué y por qué
+3. **Viñetas**: Usar `-` para listar cambios específicos
+4. **BREAKING CHANGE**: Solo si hay cambios incompatibles, debe empezar con `BREAKING CHANGE:`
+5. **Alcance**: Usar nombres descriptivos y consistentes
+6. **Tipo**: Elegir el tipo más apropiado según el cambio
+
+### Cuándo Usar Cada Tipo
+
+- **`feat`**: Nueva funcionalidad visible al usuario
+- **`fix`**: Corrección de comportamiento incorrecto
+- **`refactor`**: Mejora de código sin cambiar funcionalidad
+- **`docs`**: Solo cambios en documentación/comentarios
+- **`chore`**: Mantenimiento, dependencias, configuración
+- **`style`**: Solo formato (espacios, indentación, etc.)
+- **`test`**: Solo tests
+- **`perf`**: Mejoras de rendimiento
+- **`ci`**: Configuración de CI/CD
+
 ## Al crear código nuevo
 
 1. SIEMPRE usar JavaScript (.js), nunca TypeScript
