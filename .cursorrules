@@ -1,0 +1,62 @@
+# Reglas del Proyecto Velu Mobile
+
+## Lenguaje y Tecnologías
+
+- **SOLO JavaScript (JS)**: Este proyecto usa exclusivamente JavaScript (.js), NO TypeScript (.ts)
+- **NUNCA crear archivos .ts o .tsx**: Solo usar .js y .svelte
+- **SvelteKit**: Framework principal con Svelte 5
+- **Capacitor**: Para desarrollo móvil (iOS/Android)
+- **Supabase**: Backend y autenticación
+- **Vercel**: Plataforma de despliegue
+- **pnpm**: Gestor de paquetes (NO usar npm)
+
+## Gestión de Paquetes
+
+- **SIEMPRE usar pnpm**, nunca npm o yarn
+- Comandos: `pnpm install`, `pnpm add`, `pnpm run`, etc.
+- El proyecto tiene `pnpm-lock.yaml` y `.npmrc` configurado para pnpm
+
+## Variables de Entorno
+
+- Usar `import.meta.env` para variables de entorno públicas (NO `$env/dynamic/public`)
+- Variables públicas deben tener prefijo `PUBLIC_`
+- Configurar en Vercel: `PUBLIC_SUPABASE_URL` y `PUBLIC_SUPABASE_ANON_KEY`
+
+## Estructura del Proyecto
+
+- **Atomic Design**: atoms → molecules → organisms → templates
+- Componentes en `src/lib/components/`
+- Servicios en `src/lib/services/` (ej: supabase.js)
+- Tokens de diseño en `src/lib/tokens/`
+- Rutas en `src/routes/`
+- **Documentación**: Todos los archivos `.md` y documentación deben ir en la carpeta `docs/`
+
+## Configuración
+
+- **jsconfig.json**: Configuración de JavaScript (NO tsconfig.json)
+- **eslint.config.js**: Sin referencias a TypeScript
+- **vite.config.js**: Configuración de Vite
+- **svelte.config.js**: Configuración de SvelteKit con adapter-vercel
+
+## Convenciones
+
+- Archivos de componentes: PascalCase (ej: `Button.svelte`)
+- Variables: camelCase
+- Constantes: UPPER_SNAKE_CASE
+- Usar alias: `$lib/*`, `$tokens`
+
+## Documentación
+
+- **TODOS los archivos `.md` deben ir en la carpeta `docs/`**
+- NO crear archivos `.md` en la raíz del proyecto (excepto README.md y CONTRIBUTING.md que son estándar)
+- Cualquier documentación adicional debe estar en `docs/`
+
+## Al crear código nuevo
+
+1. SIEMPRE usar JavaScript (.js), nunca TypeScript
+2. Usar `import.meta.env` para variables de entorno
+3. Usar pnpm para instalar dependencias
+4. Seguir Atomic Design para componentes
+5. Siempre usar los componentes del atomic design sin modificarlos a menos que sea necesario para cumplir con la peticion, pero si no existe el componente se puede crear dentro del atomic design y recien usarlo.
+6. Usar los alias definidos en svelte.config.js
+7. Crear documentación en `docs/` si es necesario

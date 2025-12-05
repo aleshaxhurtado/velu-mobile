@@ -5,10 +5,13 @@
     "checkJs": true,
     "moduleResolution": "bundler",
     "baseUrl": ".",
+    "allowJs": true,
+    "noEmit": true,
     "paths": {
       "$tokens": ["src/lib/tokens/index.js"],
       "$lib/*": ["src/lib/*"]
     }
   },
-  "include": ["src/**/*.js", "src/**/*.svelte"]
+  "include": ["src/**/*.js", "src/**/*.svelte"],
+  "exclude": ["node_modules", "build", ".svelte-kit", "dist", "**/*.ts", "**/*.tsx"]
 }

@@ -36,12 +36,9 @@ Estructuras de página reutilizables:
 
 Los Design Tokens están en `src/lib/tokens/`:
 
-- `colors.ts` - Paleta de colores
-- `typography.ts` - Tipografía y tamaños
-- `spacing.ts` - Sistema de espaciado
-- `borderRadius.ts` - Radios de borde
-- `shadows.ts` - Sombras
-- `transitions.ts` - Transiciones
+- `index.js` - Tokens de diseño (colores, tipografía, espaciado, etc.)
+
+**Nota**: Este proyecto usa exclusivamente JavaScript (.js), NO TypeScript (.ts)
 
 ## Convenciones de Código
 
@@ -55,10 +52,12 @@ Los Design Tokens están en `src/lib/tokens/`:
 ## Agregar Nuevos Componentes
 
 1. Crea el componente en la carpeta correspondiente (atoms/molecules/organisms/templates)
-2. Crea un archivo `index.ts` que exporte el componente
-3. Actualiza el `index.ts` del nivel superior
+2. Crea un archivo `index.js` que exporte el componente (si es necesario)
+3. Actualiza el `index.js` del nivel superior (si existe)
 4. Usa Design Tokens en lugar de valores hardcodeados
 5. Documenta las props del componente
+
+**Importante**: Este proyecto solo usa JavaScript (.js), nunca TypeScript (.ts)
 
 ## Transiciones
 
@@ -68,10 +67,13 @@ Para usar transiciones tipo app:
 2. Envuelve el contenido con `<PageTransition>`
 3. Usa `setNavigationDirection('forward')` o `setNavigationDirection('backward')` antes de navegar
 
-## Testing
+## Testing y Desarrollo
 
 ```bash
-npm run check      # Verificar tipos
-npm run lint       # Linting
-npm run format     # Formatear código
+pnpm run lint      # Linting
+pnpm run format    # Formatear código
+pnpm run dev       # Servidor de desarrollo
+pnpm run build     # Build de producción
 ```
+
+**Nota**: Este proyecto usa `pnpm` como gestor de paquetes, NO npm.

@@ -33,7 +33,6 @@ export default [
       parserOptions: {
         parser: {
           js: 'espree',
-          ts: '@typescript-eslint/parser',
         },
       },
     },

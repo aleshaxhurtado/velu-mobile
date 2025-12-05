@@ -12,3 +12,8 @@ capacitor.config.json
 ios
 android
 dist
+
+# TypeScript (este proyecto solo usa JavaScript)
+*.ts
+*.tsx
+tsconfig.json
