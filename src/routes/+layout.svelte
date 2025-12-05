@@ -2,6 +2,7 @@
   import '../app.css';
   import '$tokens/tokens.css'; // Tokens CSS disponibles globalmente para todas las páginas
   import { onMount } from 'svelte';
+  import { browser } from '$app/environment';
   import { App } from '@capacitor/app';
   import { StatusBar, Style } from '@capacitor/status-bar';
   import { SplashScreen } from '@capacitor/splash-screen';
@@ -11,6 +12,16 @@
   let { children } = $props();
 
   onMount(async () => {
+    // Registrar Service Worker para PWA (solo en navegador, no en Capacitor)
+    if (browser && 'serviceWorker' in navigator && !Capacitor.isNativePlatform()) {
+      try {
+        const registration = await navigator.serviceWorker.register('/sw.js');
+        console.log('Service Worker registrado:', registration.scope);
+      } catch (error) {
+        console.warn('Error registrando Service Worker:', error);
+      }
+    }
+
     if (Capacitor.isNativePlatform()) {
       try {
         await StatusBar.setStyle({ style: Style.Light });

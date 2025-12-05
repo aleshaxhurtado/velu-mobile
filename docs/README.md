@@ -109,6 +109,16 @@ Guía completa del flujo de SvelteKit y estructura del proyecto:
 
 **Cuándo leerlo**: Cuando necesites entender cómo funciona SvelteKit, el flujo de renderizado, o la estructura del proyecto.
 
+### `pwa-instalacion.md`
+Guía sobre PWA (Progressive Web App) y prompt de instalación:
+- Requisitos para que el navegador muestre el prompt de instalación
+- Cómo funciona el manifest.json y service worker
+- Cómo probar la instalación en desarrollo y producción
+- Troubleshooting común
+- Personalización del prompt
+
+**Cuándo leerlo**: Cuando trabajes con PWA, necesites configurar la instalación, o quieras entender por qué no aparece el prompt de instalación.
+
 ### `desarrollo-red.md`
 Cómo acceder a la aplicación de desarrollo desde diferentes redes:
 - Desarrollo en red local
