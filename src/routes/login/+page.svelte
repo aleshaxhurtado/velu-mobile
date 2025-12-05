@@ -5,8 +5,8 @@
   import Card from '$lib/components/molecules/Card/Card.svelte';
   // Tokens CSS ya están disponibles globalmente desde +layout.svelte
 
-  let email = '';
-  let password = '';
+  let email = $state('');
+  let password = $state('');
 
   function handleSubmit(event) {
     event.preventDefault();

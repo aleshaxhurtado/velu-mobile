@@ -17,3 +17,5 @@ dist
 *.ts
 *.tsx
 tsconfig.json
+.vercel
+.env*.local

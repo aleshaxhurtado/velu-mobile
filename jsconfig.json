@@ -5,14 +5,9 @@
     "target": "esnext",
     "checkJs": true,
     "moduleResolution": "bundler",
-    "baseUrl": ".",
     "allowJs": true,
     "noEmit": true,
-    "types": ["@sveltejs/kit"],
-    "paths": {
-      "$tokens": ["src/lib/tokens/index.js"],
-      "$lib/*": ["src/lib/*"]
-    }
+    "types": ["@sveltejs/kit"]
   },
   "include": ["src/**/*.js", "src/**/*.svelte", "src/**/*.d.ts", ".svelte-kit/ambient.d.ts", ".svelte-kit/non-ambient.d.ts"],
   "exclude": ["node_modules", "build", "dist", "**/*.ts", "**/*.tsx"]

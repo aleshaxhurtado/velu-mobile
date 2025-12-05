@@ -5,7 +5,6 @@
 </script>
 
 <div class="onboarding">
-  <div class="background-image"></div>
   <div class="content">
     <h1>Bienvenido a Velu</h1>
     <p>Tu aplicación móvil de confianza</p>
@@ -16,43 +15,47 @@
 <style>
   .onboarding {
     width: 100%;
-    height: 100vh;
-    position: relative;
+    min-height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
-  }
-
-  .background-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    background-image:
+      linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.5) 50%,
+        rgba(0, 0, 0, 0.8) 100%
+      ),
+      url('https://d219336yigegi3.cloudfront.net/sites/noticias-m2/files/styles/crop_770x383/public/field/image/68678231_ml.jpg');
     background-size: cover;
     background-position: center;
-    opacity: 0.9;
+    background-repeat: no-repeat;
   }
 
   .content {
-    position: relative;
-    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
     text-align: center;
     color: white;
     padding: var(--spacing-lg);
+    padding-bottom: max(var(--spacing-lg), env(safe-area-inset-bottom));
+    padding-left: max(var(--spacing-lg), env(safe-area-inset-left));
+    padding-right: max(var(--spacing-lg), env(safe-area-inset-right));
     max-width: 400px;
+    width: 100%;
   }
 
   h1 {
     font-size: var(--font-size-3xl);
     font-weight: bold;
-    margin: 0 0 var(--spacing-sm) 0;
+    margin: 0;
   }
 
   p {
     font-size: var(--font-size-lg);
-    margin: 0 0 var(--spacing-lg) 0;
+    margin: 0;
     opacity: 0.9;
   }
 </style>

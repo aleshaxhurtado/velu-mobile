@@ -6,7 +6,12 @@
 
 - **`docs/svelte5-sintaxis.md`**: Todo sobre sintaxis de Svelte 5, runes, props, eventos, estado, snippets, lifecycle
 - **`docs/sveltekit-layouts.md`**: Cómo manejar layouts y rutas en SvelteKit con Svelte 5
+- **`docs/sveltekit-configuracion.md`**: Configuración de SvelteKit, jsconfig.json, aliases, y solución de conflictos comunes
 - **`docs/tokens-diseno.md`**: Cómo usar tokens de diseño (CSS y JavaScript)
+- **`docs/css-buenas-practicas.md`**: Buenas prácticas de CSS responsive, equivalencias con Figma Auto Layout
+- **`docs/css-figma-equivalencias.md`**: Guía completa de equivalencias entre Figma Auto Layout y CSS
+- **`docs/css-auditoria.md`**: Auditoría de CSS del proyecto con recomendaciones
+- **`docs/desarrollo-red.md`**: Cómo acceder a la app de desarrollo desde diferentes redes (local, tunneling, Vercel)
 - **`docs/pnpm.md`**: Información sobre pnpm (si existe)
 
 **Regla**: Siempre leer estos archivos cuando trabajes con estas tecnologías. NO buscar información externa si ya está documentada aquí.

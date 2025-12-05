@@ -1,10 +1,14 @@
 <script>
   import '$tokens/tokens.css';
 
-  let { fill = false, disabled = false, type = 'button', children } = $props();
+  let { fill = false, disabled = false, type = 'button', children, ...restProps } = $props();
+
+  // Validar que type sea uno de los valores permitidos
+  const buttonType = $derived(type === 'submit' || type === 'reset' ? type : 'button');
 </script>
 
-<button class="button" class:fill {disabled} {type}>
+<!-- @ts-ignore - buttonType es validado para ser 'button' | 'submit' | 'reset' -->
+<button class="button" class:fill {disabled} type={buttonType} {...restProps}>
   {@render children?.()}
 </button>
 
