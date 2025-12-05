@@ -116,7 +116,7 @@ Cuando importas funciones en `+layout.svelte`:
 
 **Ejemplo Correcto:**
 ```svelte
-<!-- src/routes/splash/+page.svelte -->
+<!-- src/routes/install/+page.svelte -->
 <script>
   // ✅ SIEMPRE importar funciones JavaScript
   import { onMount } from 'svelte';

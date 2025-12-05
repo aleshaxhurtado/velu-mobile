@@ -66,23 +66,16 @@
 
 ---
 
-### ⚠️ `src/routes/splash/+page.svelte` - MEJORABLE
+### ✅ `src/routes/splash/+page.svelte` - ELIMINADA
 
-**Estado**: ⚠️ Funciona pero puede mejorarse
+**Estado**: ✅ **Eliminada - Ya no se usa**
 
-**Problemas Encontrados**:
+**Razón**:
+- El splash nativo de Capacitor se maneja automáticamente en `+layout.svelte`
+- No se necesita una página separada para splash
+- El routing ahora va directo de `/` a `/install` (web) o `/onboarding` (nativo)
 
-1. **Falta background** - Hay un comentario sin background
-   - ⚠️ El splash no tiene fondo visible
-
-2. **Mejora Sugerida**: Agregar fallback de color
-   ```css
-   .splash {
-     background: var(--primary); /* Fallback */
-   }
-   ```
-
-**Recomendación**: Agregar color de fondo de respaldo.
+**Nota**: Esta página fue eliminada en la auditoría de routing para evitar código muerto.
 
 ---
 

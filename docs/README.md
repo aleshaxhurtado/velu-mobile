@@ -109,6 +109,15 @@ Guía completa del flujo de SvelteKit y estructura del proyecto:
 
 **Cuándo leerlo**: Cuando necesites entender cómo funciona SvelteKit, el flujo de renderizado, o la estructura del proyecto.
 
+### `auditoria-routing.md`
+Auditoría completa del sistema de routing y flujo de la aplicación:
+- Análisis del flujo de routing actual
+- Problemas encontrados y soluciones
+- Recomendaciones de arquitectura
+- Scorecard de calidad
+
+**Cuándo leerlo**: Para entender el flujo completo de routing, identificar problemas de arquitectura, o hacer code review del sistema de rutas.
+
 ### `pwa-instalacion.md`
 Guía sobre PWA (Progressive Web App) y prompt de instalación:
 - Requisitos para que el navegador muestre el prompt de instalación

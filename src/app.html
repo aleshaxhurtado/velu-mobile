@@ -10,6 +10,16 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json" />
+    <!-- Capturar evento beforeinstallprompt ANTES de que Svelte se monte -->
+    <!-- Nota: Este evento solo se dispara en navegadores web, no en apps nativas de Capacitor -->
+    <script>
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        // Guardar el evento globalmente para que Svelte lo pueda usar después
+        // Solo se ejecutará en web, nunca en iOS/Android nativo
+        window.__pwaInstallEvent = e;
+      });
+    </script>
     %sveltekit.head%
   </head>
   <body data-sveltekit-preload-data="hover">

@@ -1,19 +1,23 @@
 <script>
-  import { onMount } from 'svelte';
+  import { onMount, onDestroy } from 'svelte';
   import { goto } from '$app/navigation';
   import Button from '$lib/components/atoms/Button/Button.svelte';
   import { Capacitor } from '@capacitor/core';
   import { browser } from '$app/environment';
+  import { installPromptEvent } from '$lib/stores/pwa';
   // Tokens CSS ya están disponibles globalmente desde +layout.svelte
 
-  let deferredPrompt = $state(null);
+  let promptEvent = $state(null);
   let isInstallable = $state(false);
   let isInstalled = $state(false);
   let showManualInstructions = $state(false);
   let browserType = $state('unknown');
+  let unsubscribe;
 
   onMount(() => {
-    // Si es nativo, redirigir al onboarding
+    // Nota: Esta página solo debería ser accesible desde web
+    // +page.svelte ya valida esto antes de redirigir aquí,
+    // pero mantenemos esta validación como seguridad defensiva
     if (Capacitor.isNativePlatform()) {
       goto('/onboarding');
       return;
@@ -31,8 +35,15 @@
       return;
     }
 
-    // Escuchar el evento beforeinstallprompt
-    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    // Suscribirse al store del evento beforeinstallprompt
+    unsubscribe = installPromptEvent.subscribe((event) => {
+      promptEvent = event;
+      isInstallable = !!event;
+      // Si hay prompt disponible, ocultar instrucciones manuales
+      if (event) {
+        showManualInstructions = false;
+      }
+    });
 
     // Escuchar cuando la app se instala
     window.addEventListener('appinstalled', handleAppInstalled);
@@ -43,11 +54,13 @@
         showManualInstructions = true;
       }
     }, 1000);
+  });
 
-    return () => {
-      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-      window.removeEventListener('appinstalled', handleAppInstalled);
-    };
+  onDestroy(() => {
+    if (unsubscribe) {
+      unsubscribe();
+    }
+    window.removeEventListener('appinstalled', handleAppInstalled);
   });
 
   function detectBrowser() {
@@ -76,19 +89,11 @@
     }
   }
 
-  function handleBeforeInstallPrompt(e) {
-    // Prevenir el prompt automático
-    e.preventDefault();
-    // Guardar el evento para usarlo después
-    deferredPrompt = e;
-    isInstallable = true;
-    showManualInstructions = false; // Ocultar instrucciones manuales si hay prompt disponible
-  }
-
   function handleAppInstalled() {
     isInstalled = true;
     isInstallable = false;
-    deferredPrompt = null;
+    promptEvent = null;
+    installPromptEvent.set(null);
     // Redirigir al onboarding después de instalar
     setTimeout(() => {
       goto('/onboarding');
@@ -96,19 +101,19 @@
   }
 
   async function installApp() {
-    if (!deferredPrompt) {
+    if (!promptEvent) {
       console.warn('El prompt de instalación no está disponible');
       return;
     }
 
     try {
       // Mostrar el prompt
-      deferredPrompt.prompt();
+      promptEvent.prompt();
 
       // Esperar respuesta del usuario
-      const { outcome } = await deferredPrompt.userChoice;
+      const choiceResult = await promptEvent.userChoice;
 
-      if (outcome === 'accepted') {
+      if (choiceResult.outcome === 'accepted') {
         console.log('Usuario aceptó instalar la app');
         isInstalled = true;
       } else {
@@ -116,7 +121,8 @@
       }
 
       // Limpiar
-      deferredPrompt = null;
+      promptEvent = null;
+      installPromptEvent.set(null);
       isInstallable = false;
     } catch (error) {
       console.error('Error al instalar la app:', error);

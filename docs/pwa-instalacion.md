@@ -176,11 +176,28 @@ Después de instalar → Redirige a /onboarding
 
 ### Cómo Funciona
 
-1. **Detecta plataforma**: Solo se muestra en web, no en iOS/Android nativo
-2. **Escucha evento**: Captura `beforeinstallprompt` para obtener el prompt
-3. **Muestra botón**: Cuando el prompt está disponible, muestra "Descargar App"
-4. **Instalación**: Al hacer clic, muestra el prompt inmediatamente
-5. **Redirección**: Después de instalar, redirige automáticamente
+1. **Captura global**: El evento `beforeinstallprompt` se captura en `app.html` ANTES de que Svelte se monte
+2. **Store global**: El evento se guarda en un store de Svelte para evitar que se pierda
+3. **Detecta plataforma**: Solo se muestra en web, no en iOS/Android nativo
+4. **Muestra botón**: Cuando el prompt está disponible, muestra "Descargar App"
+5. **Instalación**: Al hacer clic, muestra el prompt inmediatamente
+6. **Redirección**: Después de instalar, redirige automáticamente
+
+### Solución al Problema de SvelteKit
+
+**Problema**: El evento `beforeinstallprompt` puede dispararse **antes de que los componentes de Svelte se monten en el cliente**, perdiéndose.
+
+**Nota importante**: Este proyecto usa **CSR (Client-Side Rendering)** con `ssr = false` en `+layout.js`, pero el problema puede ocurrir igual porque:
+- El evento se dispara cuando el navegador carga la página
+- Los componentes de Svelte se montan después de que el HTML inicial se carga
+- Si el evento se dispara entre estos dos momentos, se pierde
+- **No es un problema de SSR**, es un problema de timing entre el evento del navegador y el montaje de componentes
+
+**Solución implementada**:
+- ✅ Captura del evento en `app.html` (fuera del ciclo de Svelte, ANTES de que se monte)
+- ✅ Guardado en `window.__pwaInstallEvent` temporalmente
+- ✅ Store de Svelte (`$lib/stores/pwa.js`) para persistencia
+- ✅ Transferencia del evento al store cuando Svelte se monta en `+layout.svelte`
 
 ## Personalizar el Prompt (Opcional)
 

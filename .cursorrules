@@ -15,6 +15,7 @@
 - **`docs/splash-screen-capacitor.md`**: Guía sobre splash screen nativo de Capacitor y por qué usar auto-hide manual
 - **`docs/css-vs-javascript-imports.md`**: Diferencia entre CSS global y JavaScript con scope de módulo
 - **`docs/flujo-sveltekit-estructura.md`**: Guía completa del flujo de SvelteKit, app.html, app.css, y sistema de rutas
+- **`docs/auditoria-routing.md`**: Auditoría completa del sistema de routing y flujo de la aplicación
 - **`docs/pwa-instalacion.md`**: Guía sobre PWA y prompt de instalación en navegadores
 - **`docs/desarrollo-red.md`**: Cómo acceder a la app de desarrollo desde diferentes redes (local, tunneling, Vercel)
 - **`docs/pnpm.md`**: Información sobre pnpm (si existe)

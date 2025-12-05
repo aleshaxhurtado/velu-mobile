@@ -164,9 +164,9 @@ En SvelteKit, **la estructura de carpetas ES la estructura de rutas**. Cada carp
 routes/
 ├── +layout.js        → Configuración del layout
 ├── +layout.svelte    → Layout raíz (wrapper)
-├── +page.svelte      → Ruta: /
-├── splash/
-│   └── +page.svelte  → Ruta: /splash
+├── +page.svelte      → Ruta: / (redirige según plataforma)
+├── install/
+│   └── +page.svelte  → Ruta: /install (solo web, página de instalación PWA)
 ├── onboarding/
 │   └── +page.svelte  → Ruta: /onboarding
 ├── login/
@@ -212,8 +212,8 @@ El componente que envuelve **todas las páginas** de la aplicación.
 **Flujo:**
 ```
 +layout.svelte (wrapper)
-  └─ +page.svelte (contenido de /)
-  └─ splash/+page.svelte (contenido de /splash)
+  └─ +page.svelte (contenido de / - redirige según plataforma)
+  └─ install/+page.svelte (contenido de /install - solo web)
   └─ onboarding/+page.svelte (contenido de /onboarding)
   └─ login/+page.svelte (contenido de /login)
   └─ home/+page.svelte (contenido de /home)
@@ -245,8 +245,8 @@ Cada `+page.svelte` es una **ruta/página** de tu aplicación.
 
 **Mapeo de Rutas:**
 ```
-+page.svelte              → /
-splash/+page.svelte       → /splash
++page.svelte              → / (redirige según plataforma)
+install/+page.svelte      → /install (solo web)
 onboarding/+page.svelte   → /onboarding
 login/+page.svelte        → /login
 home/+page.svelte         → /home
