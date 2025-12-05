@@ -1,31 +1,22 @@
 <script>
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
-  import { Capacitor } from '@capacitor/core';
   // Tokens CSS ya están disponibles globalmente desde +layout.svelte
 
   onMount(() => {
-    // Solo mostrar splash en plataformas nativas (iOS/Android)
-    if (Capacitor.isNativePlatform()) {
-      // Redirige al onboarding después de 2 segundos
-      setTimeout(() => {
-        goto('/onboarding');
-      }, 2000);
-    } else {
-      // En web, redirigir directamente al onboarding
+    // Redirige al onboarding después de 2 segundos
+    setTimeout(() => {
       goto('/onboarding');
-    }
+    }, 2000);
   });
 </script>
 
-{#if Capacitor.isNativePlatform()}
-  <div class="splash">
-    <div class="content">
-      <h1>Velu</h1>
-      <p>Cargando...</p>
-    </div>
+<div class="splash">
+  <div class="content">
+    <h1>Velu</h1>
+    <p>Cargando...</p>
   </div>
-{/if}
+</div>
 
 <style>
   .splash {
