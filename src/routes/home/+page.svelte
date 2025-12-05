@@ -13,11 +13,7 @@
     // Simular carga de datos
     try {
       // Aquí irían tus llamadas a API, carga de datos, etc.
-      await new Promise((resolve) => setTimeout(resolve, 1500)); // Simular carga
-
-      // Cambiar mensaje si es necesario
-      message = 'Finalizando...';
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      await new Promise((resolve) => setTimeout(resolve, 600)); // Simular carga
 
       isLoading = false;
     } catch (error) {
@@ -42,7 +38,8 @@
 <style>
   .page {
     padding: var(--spacing-md);
-    min-height: 100vh;
+    /* min-height: 100vh; */
+    height: 100%;
     background: var(--bg-light);
   }
 

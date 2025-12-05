@@ -33,7 +33,8 @@
 <style>
   .page {
     padding: var(--spacing-md);
-    min-height: 100vh;
+    /* min-height: 100vh; */
+    height: 100%;
     background: var(--bg-light);
     display: flex;
     align-items: center;
