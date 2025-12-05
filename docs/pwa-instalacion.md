@@ -144,11 +144,49 @@ Después del deploy:
    - ✅ HTTPS
    - ✅ Responsive design
 
+## Página de Instalación Manual
+
+### Implementación Actual
+
+Hemos creado una página `/install` que muestra un botón de instalación manual, evitando esperar las condiciones del navegador.
+
+**Ubicación**: `src/routes/install/+page.svelte`
+
+**Características:**
+- ✅ Botón "Descargar App" que muestra el prompt inmediatamente
+- ✅ Solo visible en web (no en Capacitor nativo)
+- ✅ Detecta si la app ya está instalada
+- ✅ Opción para continuar sin instalar
+- ✅ Redirige automáticamente después de instalar
+
+**Flujo:**
+```
+Usuario visita la app (web)
+  ↓
++page.svelte detecta que es web
+  ↓
+Redirige a /install
+  ↓
+Página muestra botón "Descargar App"
+  ↓
+Usuario hace clic → Prompt aparece inmediatamente
+  ↓
+Después de instalar → Redirige a /onboarding
+```
+
+### Cómo Funciona
+
+1. **Detecta plataforma**: Solo se muestra en web, no en iOS/Android nativo
+2. **Escucha evento**: Captura `beforeinstallprompt` para obtener el prompt
+3. **Muestra botón**: Cuando el prompt está disponible, muestra "Descargar App"
+4. **Instalación**: Al hacer clic, muestra el prompt inmediatamente
+5. **Redirección**: Después de instalar, redirige automáticamente
+
 ## Personalizar el Prompt (Opcional)
 
 ### Mostrar Prompt Manualmente
 
-Puedes mostrar el prompt manualmente usando el evento `beforeinstallprompt`:
+Si quieres implementar esto en otra página, puedes usar el evento `beforeinstallprompt`:
 
 ```js
 let deferredPrompt;
