@@ -70,6 +70,45 @@ Auditoría completa de CSS del proyecto:
 
 **Cuándo leerlo**: Para entender el estado actual del CSS del proyecto y las mejoras aplicadas.
 
+### `loading-component.md`
+Documentación del componente Loading reutilizable:
+- Cómo usar el componente Loading
+- Props y personalización
+- Ejemplos de uso
+- Mejores prácticas
+- Diferencia entre Splash Screen nativo y Loading component
+
+**Cuándo leerlo**: Cuando necesites mostrar estados de carga en páginas o componentes.
+
+### `splash-screen-capacitor.md`
+Guía sobre el splash screen nativo de Capacitor:
+- Diferencia entre auto-hide automático vs manual
+- Por qué usar `launchAutoHide: false`
+- Cómo ocultar el splash cuando la app está lista
+- Flujo completo de inicialización
+- Mejores prácticas
+
+**Cuándo leerlo**: Cuando trabajes con Capacitor o necesites entender cómo funciona el splash screen nativo.
+
+### `css-vs-javascript-imports.md`
+Diferencia entre CSS y JavaScript en cuanto a disponibilidad global:
+- Por qué CSS está disponible globalmente pero JavaScript no
+- Cuándo importar tokens CSS vs funciones JavaScript
+- Reglas de oro para imports
+- Ejemplos correctos e incorrectos
+
+**Cuándo leerlo**: Cuando tengas dudas sobre qué necesitas importar y qué está disponible globalmente.
+
+### `flujo-sveltekit-estructura.md`
+Guía completa del flujo de SvelteKit y estructura del proyecto:
+- Qué es app.html y para qué sirve
+- Qué es app.css y para qué sirve
+- Cómo funciona el sistema de rutas (routes/)
+- Flujo completo de renderizado
+- Para qué sirve cada archivo especial (+layout.js, +layout.svelte, +page.svelte)
+
+**Cuándo leerlo**: Cuando necesites entender cómo funciona SvelteKit, el flujo de renderizado, o la estructura del proyecto.
+
 ### `desarrollo-red.md`
 Cómo acceder a la aplicación de desarrollo desde diferentes redes:
 - Desarrollo en red local

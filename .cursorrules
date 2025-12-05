@@ -11,6 +11,10 @@
 - **`docs/css-buenas-practicas.md`**: Buenas prácticas de CSS responsive, equivalencias con Figma Auto Layout
 - **`docs/css-figma-equivalencias.md`**: Guía completa de equivalencias entre Figma Auto Layout y CSS
 - **`docs/css-auditoria.md`**: Auditoría de CSS del proyecto con recomendaciones
+- **`docs/loading-component.md`**: Documentación del componente Loading reutilizable para estados de carga
+- **`docs/splash-screen-capacitor.md`**: Guía sobre splash screen nativo de Capacitor y por qué usar auto-hide manual
+- **`docs/css-vs-javascript-imports.md`**: Diferencia entre CSS global y JavaScript con scope de módulo
+- **`docs/flujo-sveltekit-estructura.md`**: Guía completa del flujo de SvelteKit, app.html, app.css, y sistema de rutas
 - **`docs/desarrollo-red.md`**: Cómo acceder a la app de desarrollo desde diferentes redes (local, tunneling, Vercel)
 - **`docs/pnpm.md`**: Información sobre pnpm (si existe)
 

@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
   // Tokens CSS ya están disponibles globalmente desde +layout.svelte
+  // Pero funciones JavaScript (onMount, goto) DEBEN importarse en cada archivo
 
   onMount(() => {
     // Redirige al onboarding después de 2 segundos
@@ -25,7 +26,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    background: var(--bg);
   }
 
   .content {
